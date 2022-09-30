@@ -71,7 +71,7 @@ def mtm():
         msg.body =  " Hi "+name+" \n \nYour marks for "+sub+" is "+  marks +"\n \n \n "+a
         try:
             if len(name)>3 or len(sub)>4 or len(usn)>4 : 
-                # mail.send(msg)
+                mail.send(msg)
                 toto=students(Name=name.capitalize(),Usn=usn.upper(),Subject=sub.capitalize(),Marks=int(marks),Mail_Id=email)
                 db.session.add(toto)
                 db.session.commit()
