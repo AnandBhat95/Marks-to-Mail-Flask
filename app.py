@@ -82,7 +82,7 @@ def mtm():
                 if flag:  
                     flash('details already exist')
                 else:    
-                    # mail.send(msg)
+                    mail.send(msg)
                     db.session.add(toto)
                     db.session.commit()
                     flash ("Mail sent to "+ email)
