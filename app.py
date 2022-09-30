@@ -71,11 +71,21 @@ def mtm():
         msg.body =  " Hi "+name+" \n \nYour marks for "+sub+" is "+  marks +"\n \n \n "+a
         try:
             if len(name)>3 and len(sub)>2 and len(usn)>2 and len(str(marks))<4 and len(mail_subject)>4: 
-                mail.send(msg)
+               
                 toto=students(Name=name.capitalize(),Usn=usn.upper(),Subject=sub.capitalize(),Marks=int(marks),Mail_Id=email)
-                db.session.add(toto)
-                db.session.commit()
-                flash ("Mail sent to "+ email)
+                list_query=students.query.all()
+                flag=False
+                for result in list_query:
+                 if name in result.Name or usn in result.Usn:
+                    flag=True
+                    break
+                if flag:  
+                    flash('details already exist')
+                else:    
+                    # mail.send(msg)
+                    db.session.add(toto)
+                    db.session.commit()
+                    flash ("Mail sent to "+ email)
             else:
                 flash('Invalid details')    
         except:
