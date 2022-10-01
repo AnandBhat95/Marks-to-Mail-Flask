@@ -96,14 +96,6 @@
        </div>
 
         <h2 class="container mx-2">Student Details</h2>
-       
-        
-                {% if los|length == 0 %}
-                   
-                <div class="alert alert-dark" role="alert">
-                    No records found
-                  </div>
-                    {% else %} 
                     <table class="styled-table">
                         <thead>
                           <tr>
@@ -118,25 +110,23 @@
                         </thead>
                         
                         <tbody>
-              {% for todo in los %}
               <tr>
-                <th scope="row">{{loop.index}}</th>
-                <td>{{todo.Name}}</td>
-                <td>{{todo.Usn}}</td>
-                <td>{{todo.Subject}}</td>
-                <td>{{todo.Marks}}</td>
-                <td>{{todo.Mail_Id}}</td>
+                <th scope="row">{{l.Sno}}</th>
+                <td>{{l.Name}}</td>
+                <td>{{l.Usn}}</td>
+                <td>{{l.Subject}}</td>
+                <td>{{l.Marks}}</td>
+                <td>{{l.Mail_Id}}</td>
                 <td>
-                  <a href="/update/{{todo.Sno}}" type="button" class="button-33">Update</button>
-                  <a href="/delete/{{todo.Sno}}" type="button" class="button-33">Delete</button>
+                  <a href="/update/{{l.Sno}}" type="button" class="button-33">Update</button>
+                  <a href="/delete/{{l.Sno}}" type="button" class="button-33">Delete</button>
                 
                 </td>
               </tr>
               
-              {% endfor %}
+             
             </tbody>
             </table>
-              {% endif %}
                
            
     </div>

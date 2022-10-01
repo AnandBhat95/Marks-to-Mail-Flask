@@ -96,6 +96,14 @@ def mtm():
 def view():
    los=students.query.all()
    return render_template("view_page.html",los=los)
+
+@app.route('/search',methods=['GET', 'POST'])
+def search():
+    if request.method == "POST":
+         search = request.form.get("search")
+         l=students.query.filter_by(Usn=search).first_or_404(description='There is no data with {}'.format(search))
+         print('\n',search)
+         return render_template("search.html",l=l)
    
 @app.route('/delete/<int:sno>')
 def delete(sno):
